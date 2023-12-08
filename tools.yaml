@@ -1,0 +1,22 @@
+tools:
+- name: k9s
+  repository: derailed/k9s
+  version: v0.29.1
+  verify_command: k9s version
+  download_template:
+    x86_64: https://github.com/derailed/k9s/releases/download/{VERSION}/k9s_Linux_amd64.tar.gz
+    aarch64: https://github.com/derailed/k9s/releases/download/{VERSION}/k9s_Linux_arm64.tar.gz
+- name: kubectl
+  repository: kubernetes/kubernetes
+  version: v1.28.4
+  verify_command: kubectl version --client
+  download_template:
+    x86_64: https://dl.k8s.io/release/{VERSION}/bin/linux/amd64/kubectl
+    aarch64: https://dl.k8s.io/release/{VERSION}/bin/linux/arm64/kubectl
+- name: terraform
+  repository: hashicorp/terraform
+  version: v1.6.5
+  verify_command: terraform --version
+  download_template:
+    x86_64: https://releases.hashicorp.com/terraform/{VERSION_NUMBER}/terraform_{VERSION_NUMBER}_linux_amd64.zip
+    aarch64: https://releases.hashicorp.com/terraform/{VERSION_NUMBER}/terraform_{VERSION_NUMBER}_linux_arm64.zip
