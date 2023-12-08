@@ -64,12 +64,18 @@ jobs:
           org.opencontainers.image.description=Toolbox that contains all useful DevOps tools for my day to day job.
           org.opencontainers.image.vendor=Skaronator
 
+    - name: Get tool versions          
+      uses: mikefarah/yq@v4.40.4
+      id: tool_versions
+      with:
+        cmd: yq e '.tools[] | (.name + " " + .version)' tools.yaml
+
     - name: Publish tag
       run: |
         git config user.name "GitHub Actions"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-        git tag -a ${{ steps.version.outputs.new_version }} -m "Version ${{ steps.version.outputs.new_version }}"
+        git tag -a ${{ steps.version.outputs.new_version }} -m "${{ steps.tool_versions.outputs.result }}"
         git push origin ${{ steps.version.outputs.new_version }}
 
     - name: Build and push Docker image
@@ -82,12 +88,6 @@ jobs:
         provenance: false
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
-
-    - name: Get tool versions          
-      uses: mikefarah/yq@v4.40.4
-      id: tool_versions
-      with:
-        cmd: yq e '.tools[] | (.name + " " + .version)' tools.yaml
 
     - name: Release
       uses: softprops/action-gh-release@v1
