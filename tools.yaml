@@ -20,3 +20,10 @@ tools:
   download_template:
     x86_64: https://releases.hashicorp.com/terraform/{VERSION_NUMBER}/terraform_{VERSION_NUMBER}_linux_amd64.zip
     aarch64: https://releases.hashicorp.com/terraform/{VERSION_NUMBER}/terraform_{VERSION_NUMBER}_linux_arm64.zip
+- name: vault
+  repository: hashicorp/vault
+  version: v1.15.4
+  verify_command: vault --version
+  download_template:
+    x86_64: https://releases.hashicorp.com/vault/{VERSION_NUMBER}/vault_{VERSION_NUMBER}_linux_amd64.zip
+    aarch64: https://releases.hashicorp.com/vault/{VERSION_NUMBER}/vault_{VERSION_NUMBER}_linux_arm64.zip
