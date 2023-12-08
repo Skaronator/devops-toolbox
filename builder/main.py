@@ -41,11 +41,3 @@ if __name__ == '__main__':
 
     for tool in tools['tools']:
         process_tool(tool, args.output)
-
-    output_file = os.path.join(args.output, 'versions.txt')
-    with open(output_file, 'w') as output_file:
-        sorted_tools = sorted(tools['tools'], key=lambda x: x['name'])
-        for tool in sorted_tools:
-            name = tool['name']
-            version = tool['version']
-            output_file.write(f"{name}: {version}\n")

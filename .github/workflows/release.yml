@@ -3,8 +3,8 @@ name: Release
 on:
   push:
     branches: [ "main" ]
-    paths:
-    - 'tools.yaml'
+    # paths:
+    # - 'tools.yaml'
 
 jobs:
   release:
@@ -21,25 +21,12 @@ jobs:
     - name: Increment Version
       id: version
       run: |
-        current_version=$(git describe --tags --abbrev=0 2>/dev/null || echo "0")
+        current_version=$(git describe --tags --abbrev=0 2>/dev/null | sed 's/v//g' || echo "0")
         new_version=v$((current_version + 1))
 
         echo "Current version: $current_version"
         echo "New version: $new_version"
         echo "new_version=$new_version" >> "$GITHUB_OUTPUT"
-
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.12'
-        cache: 'pip'
-
-    - name: Install pip dependencies
-      working-directory: builder
-      run: pip install -r requirements.txt
-
-    - name: Run builder script
-      working-directory: builder
-      run: python3 main.py
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
@@ -96,13 +83,19 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
 
-    - name: "Build Changelog"
-      id: changelog
-      uses: mikepenz/release-changelog-builder-action@v4.1.0
+    - name: Get tool versions          
+      uses: mikefarah/yq@v4.40.4
+      id: tool_versions
+      with:
+        cmd: yq e '.tools[] | (.name + " " + .version)' tools.yaml
 
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ steps.version.outputs.new_version }}
         generate_release_notes: true
-        body_path: dist/versions.txt
+        body: |
+          ## Included versions
+          ```txt
+          ${{ steps.tool_versions.outputs.result }}
+          ```
