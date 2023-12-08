@@ -9,7 +9,6 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    needs: build
     permissions:
       contents: write
       packages: write
@@ -29,7 +28,7 @@ jobs:
         echo "New version: $new_version"
         echo "new_version=$new_version" >> "$GITHUB_OUTPUT"
 
-    - uses: actions/setup-python@v4
+    - uses: actions/setup-python@v5
       with:
         python-version: '3.12'
         cache: 'pip'
@@ -38,7 +37,7 @@ jobs:
       working-directory: builder
       run: pip install -r requirements.txt
 
-    - name: Install pip dependencies
+    - name: Run builder script
       working-directory: builder
       run: python3 main.py
 

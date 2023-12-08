@@ -15,7 +15,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - uses: actions/setup-python@v4
+    - uses: actions/setup-python@v5
       with:
         python-version: '3.12'
         cache: 'pip'
@@ -24,6 +24,6 @@ jobs:
       working-directory: builder
       run: pip install -r requirements.txt
 
-    - name: Install pip dependencies
+    - name: Run builder script
       working-directory: builder
       run: python3 main.py
