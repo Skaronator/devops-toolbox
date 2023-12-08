@@ -34,3 +34,10 @@ tools:
   download_template:
     x86_64: https://github.com/k0sproject/k0sctl/releases/download/{VERSION}/k0sctl-linux-x64
     aarch64: https://github.com/k0sproject/k0sctl/releases/download/{VERSION}/k0sctl-linux-arm64
+- name: ya
+  repository: mikefarah/yq
+  version: v4.40.4
+  verify_command: yq --version
+  download_template:
+    x86_64: https://github.com/mikefarah/yq/releases/download/{VERSION}/yq_linux_amd64
+    aarch64: https://github.com/mikefarah/yq/releases/download/{VERSION}/yq_linux_arm64

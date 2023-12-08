@@ -95,7 +95,7 @@ jobs:
         tag_name: ${{ steps.version.outputs.new_version }}
         generate_release_notes: true
         body: |
-          ## Included versions
+          ## Included Versions
           ```txt
           ${{ steps.tool_versions.outputs.result }}
           ```
