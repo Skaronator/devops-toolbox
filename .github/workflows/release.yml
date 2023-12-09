@@ -3,8 +3,8 @@ name: Release
 on:
   push:
     branches: [ "main" ]
-    # paths:
-    # - 'tools.yaml'
+    paths:
+    - 'tools.yaml'
 
 jobs:
   release:
