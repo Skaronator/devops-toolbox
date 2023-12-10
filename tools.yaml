@@ -41,3 +41,17 @@ tools:
   download_template:
     x86_64: https://github.com/mikefarah/yq/releases/download/{VERSION}/yq_linux_amd64
     aarch64: https://github.com/mikefarah/yq/releases/download/{VERSION}/yq_linux_arm64
+- name: helm
+  repository: helm/helm
+  version: v3.13.2
+  verify_command: helm version
+  download_template:
+    x86_64: https://get.helm.sh/helm-{VERSION}-linux-amd64.tar.gz
+    aarch64: https://get.helm.sh/helm-{VERSION}-linux-arm64.tar.gz
+- name: kubeconform
+  repository: yannh/kubeconform
+  version: v0.6.4
+  verify_command: kubeconform -v
+  download_template:
+    x86_64: https://github.com/yannh/kubeconform/releases/download/{VERSION}/kubeconform-linux-amd64.tar.gz
+    aarch64: https://github.com/yannh/kubeconform/releases/download/{VERSION}/kubeconform-linux-arm64.tar.gz
