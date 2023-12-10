@@ -29,7 +29,11 @@ def fetch_tool(output_dir, url, name):
     elif file_path.endswith(".tar.gz"):
         print(f"Extacting {name} from {file_path} to {output_dir}")
         with tarfile.open(file_path, 'r:gz') as tar_ref:
-            tar_ref.extract(name, output_dir)
+            for member in tar_ref.getmembers():
+                if name in os.path.basename(member.name):
+                    with tar_ref.extractfile(member) as src, open(output_file, 'wb') as dst:
+                        dst.write(src.read())
+
     else:
         shutil.move(file_path, output_file)
 
