@@ -68,7 +68,7 @@ jobs:
       uses: mikefarah/yq@v4.40.4
       id: tool_versions
       with:
-        cmd: yq e '.tools[] | (.name + " " + .version)' tools.yaml
+        cmd: yq e '.tools | sort_by(.name) | .[] | (.name + " " + .version)' tools.yaml
 
     - name: Publish tag
       run: |
