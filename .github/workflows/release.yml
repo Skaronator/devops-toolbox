@@ -75,7 +75,7 @@ jobs:
         git config user.name "GitHub Actions"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-        git tag -a ${{ steps.version.outputs.new_version }} -m "${{ steps.tool_versions.outputs.result }}"
+        git tag -a ${{ steps.version.outputs.new_version }} -m "Release ${{ steps.version.outputs.new_version }}" -m "Contains" -m "${{ steps.tool_versions.outputs.result }}"
         git push origin ${{ steps.version.outputs.new_version }}
 
     - name: Build and push Docker image
