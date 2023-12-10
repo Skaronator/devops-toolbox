@@ -57,7 +57,7 @@ tools:
     aarch64: https://github.com/yannh/kubeconform/releases/download/{VERSION}/kubeconform-linux-arm64.tar.gz
 - name: argocd
   repository: argoproj/argo-cd
-  version: v2.7.15
+  version: v2.9.3
   verify_command: argocd version --client
   download_template:
     x86_64: https://github.com/argoproj/argo-cd/releases/download/{VERSION}/argocd-linux-amd64
