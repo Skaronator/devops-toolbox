@@ -36,7 +36,7 @@ tools:
     aarch64: https://github.com/k0sproject/k0sctl/releases/download/{VERSION}/k0sctl-linux-arm64
 - name: yq
   repository: mikefarah/yq
-  version: v4.40.4
+  version: v4.40.5
   verify_command: yq --version
   download_template:
     x86_64: https://github.com/mikefarah/yq/releases/download/{VERSION}/yq_linux_amd64
