@@ -13,3 +13,9 @@ ENV PATH="/app:${PATH}"
 COPY --from=BUILDER /output /app
 
 WORKDIR /workdir
+
+# Fix limit color range
+ENV TERM="xterm-256color"
+
+# Print alias commands by default
+CMD ["cat", "/app/alias"]

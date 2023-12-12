@@ -9,6 +9,7 @@ from builder.verify import verify_tool
 
 DOCKER_IMAGE = "ghcr.io/skaronator/devops-toolbox:latest"
 
+
 def process_tool(tool: Tool, output_dir) -> str:
     arch = platform.machine()
     name = tool['name']
@@ -29,7 +30,7 @@ def process_tool(tool: Tool, output_dir) -> str:
 
     print(f"{'=' * 25} Successfully installed {name}! {'=' * 25}")
 
-    alias_command = f"alias \"{name}\"=\"docker run -it -e HOME -e USER {docker_command} {DOCKER_IMAGE} {name}\""
+    alias_command = f"alias '{name}'='docker run -it -e HOME -e USER {docker_command} {DOCKER_IMAGE} {name}'"
     return alias_command
 
 
@@ -45,7 +46,7 @@ if __name__ == '__main__':
         tools: ToolList = yaml.safe_load(file)
 
     all_alias = "#!/bin/sh" + "\n"
-    all_alias += f"alias \"toolbox-update\"=\"docker pull {DOCKER_IMAGE}\"" + "\n"
+    all_alias += f"alias 'toolbox-update'='docker pull {DOCKER_IMAGE}'" + "\n"
     for tool in tools['tools']:
         alias = process_tool(tool, args.output)
         all_alias += alias + "\n"
