@@ -7,7 +7,9 @@ COPY tools.yaml .
 RUN pip install -r requirements.txt
 RUN python main.py --output-dir=/output --tools-yaml=./tools.yaml
 
-FROM scratch as BASE
+FROM alpine:3.19 as BASE
 
-WORKDIR /app
+ENV PATH="/app:${PATH}"
 COPY --from=BUILDER /output /app
+
+WORKDIR /workdir

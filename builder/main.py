@@ -7,10 +7,12 @@ from builder.types import Tool, ToolList
 from builder.fetch import fetch_tool
 from builder.verify import verify_tool
 
+DOCKER_IMAGE = "ghcr.io/skaronator/devops-toolbox:latest"
 
-def process_tool(tool: Tool, output_dir) -> None:
+def process_tool(tool: Tool, output_dir) -> str:
     arch = platform.machine()
     name = tool['name']
+    docker_command = tool.get('docker_command', "")
 
     version = tool['version']
     # remove v prefix from version number
@@ -27,6 +29,9 @@ def process_tool(tool: Tool, output_dir) -> None:
 
     print(f"{'=' * 25} Successfully installed {name}! {'=' * 25}")
 
+    alias_command = f"alias \"{name}\"=\"docker run -it -e HOME -e USER {docker_command} {DOCKER_IMAGE} {name}\""
+    return alias_command
+
 
 if __name__ == '__main__':
 
@@ -39,5 +44,14 @@ if __name__ == '__main__':
     with open(args.tools, 'r') as file:
         tools: ToolList = yaml.safe_load(file)
 
+    all_alias = "#!/bin/sh" + "\n"
+    all_alias += f"alias \"toolbox-update\"=\"docker pull {DOCKER_IMAGE}\"" + "\n"
     for tool in tools['tools']:
-        process_tool(tool, args.output)
+        alias = process_tool(tool, args.output)
+        all_alias += alias + "\n"
+
+    load_alias_file = os.path.join(args.output, "alias")
+    with open(load_alias_file, "w") as file:
+        file.write(all_alias)
+
+    os.chmod(load_alias_file, 0o755)
