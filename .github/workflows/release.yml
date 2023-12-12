@@ -65,7 +65,7 @@ jobs:
           org.opencontainers.image.vendor=Skaronator
 
     - name: Get tool versions          
-      uses: mikefarah/yq@v4.40.4
+      uses: mikefarah/yq@v4.40.5
       id: tool_versions
       with:
         cmd: yq e '.tools | sort_by(.name) | .[] | (.name + " " + .version)' tools.yaml
