@@ -9,7 +9,7 @@ tools:
     aarch64: https://github.com/derailed/k9s/releases/download/{VERSION}/k9s_Linux_arm64.tar.gz
 - name: kubectl
   repository: kubernetes/kubernetes
-  version: v1.28.4
+  version: v1.29.0
   verify_command: kubectl version --client
   docker_command: -v $HOME/.kube/config:$HOME/.kube/config
   download_template:
@@ -17,7 +17,7 @@ tools:
     aarch64: https://dl.k8s.io/release/{VERSION}/bin/linux/arm64/kubectl
 - name: terraform
   repository: hashicorp/terraform
-  version: v1.6.5
+  version: v1.6.6
   verify_command: terraform --version
   docker_command: -v $HOME/.aws:$HOME/.aws -v $PWD:/workdir
   download_template:
