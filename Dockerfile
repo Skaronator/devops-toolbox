@@ -17,5 +17,9 @@ WORKDIR /workdir
 # Fix limit color range
 ENV TERM="xterm-256color"
 
+# add xclíp for k9s
+RUN apk update && \
+    apk add --no-cache xclip
+
 # Print alias commands by default
 CMD ["cat", "/app/alias"]

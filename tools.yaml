@@ -3,7 +3,7 @@ tools:
   repository: derailed/k9s
   version: v0.29.1
   verify_command: k9s version
-  docker_command: -v $HOME/.kube/config:$HOME/.kube/config -v $HOME/.config/k9s:$HOME/.config/k9s
+  docker_command: -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11 -v $HOME/.kube/config:$HOME/.kube/config -v $HOME/.config/k9s:$HOME/.config/k9s
   download_template:
     x86_64: https://github.com/derailed/k9s/releases/download/{VERSION}/k9s_Linux_amd64.tar.gz
     aarch64: https://github.com/derailed/k9s/releases/download/{VERSION}/k9s_Linux_arm64.tar.gz
