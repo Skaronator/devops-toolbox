@@ -48,7 +48,7 @@ tools:
     aarch64: https://github.com/mikefarah/yq/releases/download/{VERSION}/yq_linux_arm64
 - name: helm
   repository: helm/helm
-  version: v3.13.2
+  version: v3.13.3
   verify_command: helm version
   docker_command: -v $PWD:/workdir
   download_template:
