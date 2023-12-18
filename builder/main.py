@@ -30,7 +30,7 @@ def process_tool(tool: Tool, output_dir) -> str:
 
     print(f"{'=' * 25} Successfully installed {name}! {'=' * 25}")
 
-    alias_command = f"alias '{name}'='docker run -it -e HOME -e USER -u \"$(id -u):$(id -g)\" {docker_command} {DOCKER_IMAGE} {name}'"
+    alias_command = f"alias '{name}'='docker run -it -e HOME -e USER {docker_command} {DOCKER_IMAGE} {name}'"
     return alias_command
 
 
