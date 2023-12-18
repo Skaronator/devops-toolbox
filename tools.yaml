@@ -70,3 +70,11 @@ tools:
   download_template:
     x86_64: https://github.com/argoproj/argo-cd/releases/download/{VERSION}/argocd-linux-amd64
     aarch64: https://github.com/argoproj/argo-cd/releases/download/{VERSION}/argocd-linux-arm64
+- name: tofu
+  repository: opentofu/opentofu
+  version: v1.6.0-beta5
+  verify_command: tofu -version
+  docker_command: -v $HOME/.aws:$HOME/.aws -v $PWD:/workdir
+  download_template:
+    x86_64: https://github.com/opentofu/opentofu/releases/download/{VERSION}/tofu_1.6.0-beta5_linux_amd64.zip
+    aarch64: https://github.com/opentofu/opentofu/releases/download/{VERSION}/tofu_1.6.0-beta5_linux_arm64.zip
