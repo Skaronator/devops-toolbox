@@ -52,7 +52,7 @@ if __name__ == '__main__':
         all_alias += alias + "\n"
 
     load_alias_file = os.path.join(args.output, "alias")
-    with open(load_alias_file, "w") as file:
+    with open(load_alias_file, "w", newline="\n") as file:
         file.write(all_alias)
 
     os.chmod(load_alias_file, 0o755)
