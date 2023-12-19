@@ -45,8 +45,8 @@ tools:
   verify_command: tofu -version
   docker_command: -v $HOME/.aws:$HOME/.aws -v $PWD:/workdir
   download_template:
-    x86_64: https://github.com/opentofu/opentofu/releases/download/{VERSION}/tofu_1.6.0-beta5_linux_amd64.zip
-    aarch64: https://github.com/opentofu/opentofu/releases/download/{VERSION}/tofu_1.6.0-beta5_linux_arm64.zip
+    x86_64: https://github.com/opentofu/opentofu/releases/download/{VERSION}/tofu_{VERSION_NUMBER}_linux_amd64.zip
+    aarch64: https://github.com/opentofu/opentofu/releases/download/{VERSION}/tofu_{VERSION_NUMBER}_linux_arm64.zip
 - name: terraform
   repository: hashicorp/terraform
   version: v1.6.6
@@ -78,3 +78,11 @@ tools:
   download_template:
     x86_64: https://get.helm.sh/helm-{VERSION}-linux-amd64.tar.gz
     aarch64: https://get.helm.sh/helm-{VERSION}-linux-arm64.tar.gz
+- name: kubent
+  repository: doitintl/kube-no-trouble
+  version: nightly-0.7.0-58-g270c9cb
+  verify_command: kubent --version
+  docker_command: -v $HOME/.kube/config:$HOME/.kube/config -v $PWD:/workdir
+  download_template:
+    x86_64: https://github.com/doitintl/kube-no-trouble/releases/download/{VERSION}/kubent-{VERSION}-linux-amd64.tar.gz
+    aarch64: https://github.com/doitintl/kube-no-trouble/releases/download/{VERSION}/kubent-{VERSION}-linux-arm64.tar.gz
