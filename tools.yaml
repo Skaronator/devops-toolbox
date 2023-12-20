@@ -80,7 +80,7 @@ tools:
     aarch64: https://get.helm.sh/helm-{VERSION}-linux-arm64.tar.gz
 - name: kubent
   repository: doitintl/kube-no-trouble
-  version: nightly-0.7.0-58-g270c9cb
+  version: v0.7.1
   verify_command: kubent --version
   docker_command: -v $HOME/.kube/config:$HOME/.kube/config -v $PWD:/workdir
   download_template:
