@@ -10,7 +10,6 @@ RUN python main.py --output-dir=/output --tools-yaml=./tools.yaml
 FROM alpine:3.19 as BASE
 
 ENV PATH="/app:${PATH}"
-COPY --from=BUILDER /output /app
 
 WORKDIR /workdir
 
@@ -22,5 +21,6 @@ ENV TERM="xterm-256color"
 RUN apk update && \
     apk add --no-cache xclip git
 
+COPY --from=BUILDER /output /app
 # Print alias commands by default
 CMD ["cat", "/app/alias"]
