@@ -3,7 +3,7 @@ tools:
   repository: argoproj/argo-cd
   version: v2.9.3
   verify_command: argocd version --client
-  docker_command: -v $HOME/.config/argocd:$HOME/.config/argocd -v $PWD:/workdir
+  docker_command: -v $HOME/.config/argocd:$HOME/.config/argocd
   download_template:
     x86_64: https://github.com/argoproj/argo-cd/releases/download/{VERSION}/argocd-linux-amd64
     aarch64: https://github.com/argoproj/argo-cd/releases/download/{VERSION}/argocd-linux-arm64
@@ -11,7 +11,6 @@ tools:
   repository: k0sproject/k0sctl
   version: v0.16.0
   verify_command: k0sctl version
-  docker_command: -v $PWD:/workdir
   download_template:
     x86_64: https://github.com/k0sproject/k0sctl/releases/download/{VERSION}/k0sctl-linux-x64
     aarch64: https://github.com/k0sproject/k0sctl/releases/download/{VERSION}/k0sctl-linux-arm64
@@ -27,7 +26,7 @@ tools:
   repository: yannh/kubeconform
   version: v0.6.4
   verify_command: kubeconform -v
-  docker_command: -v $HOME/.kube/config:$HOME/.kube/config -v $PWD:/workdir
+  docker_command: -v $HOME/.kube/config:$HOME/.kube/config
   download_template:
     x86_64: https://github.com/yannh/kubeconform/releases/download/{VERSION}/kubeconform-linux-amd64.tar.gz
     aarch64: https://github.com/yannh/kubeconform/releases/download/{VERSION}/kubeconform-linux-arm64.tar.gz
@@ -43,7 +42,7 @@ tools:
   repository: opentofu/opentofu
   version: v1.6.0-beta5
   verify_command: tofu -version
-  docker_command: -v $HOME/.aws:$HOME/.aws -v $PWD:/workdir
+  docker_command: -v $HOME/.aws:$HOME/.aws
   download_template:
     x86_64: https://github.com/opentofu/opentofu/releases/download/{VERSION}/tofu_{VERSION_NUMBER}_linux_amd64.zip
     aarch64: https://github.com/opentofu/opentofu/releases/download/{VERSION}/tofu_{VERSION_NUMBER}_linux_arm64.zip
@@ -51,7 +50,7 @@ tools:
   repository: hashicorp/terraform
   version: v1.6.6
   verify_command: terraform --version
-  docker_command: -v $HOME/.aws:$HOME/.aws -v $PWD:/workdir
+  docker_command: -v $HOME/.aws:$HOME/.aws
   download_template:
     x86_64: https://releases.hashicorp.com/terraform/{VERSION_NUMBER}/terraform_{VERSION_NUMBER}_linux_amd64.zip
     aarch64: https://releases.hashicorp.com/terraform/{VERSION_NUMBER}/terraform_{VERSION_NUMBER}_linux_arm64.zip
@@ -66,7 +65,6 @@ tools:
   repository: mikefarah/yq
   version: v4.40.5
   verify_command: yq --version
-  docker_command: -v $PWD:/workdir
   download_template:
     x86_64: https://github.com/mikefarah/yq/releases/download/{VERSION}/yq_linux_amd64
     aarch64: https://github.com/mikefarah/yq/releases/download/{VERSION}/yq_linux_arm64
@@ -74,7 +72,6 @@ tools:
   repository: helm/helm
   version: v3.13.3
   verify_command: helm version
-  docker_command: -v $PWD:/workdir
   download_template:
     x86_64: https://get.helm.sh/helm-{VERSION}-linux-amd64.tar.gz
     aarch64: https://get.helm.sh/helm-{VERSION}-linux-arm64.tar.gz
@@ -82,7 +79,7 @@ tools:
   repository: doitintl/kube-no-trouble
   version: v0.7.1
   verify_command: kubent --version
-  docker_command: -v $HOME/.kube/config:$HOME/.kube/config -v $PWD:/workdir
+  docker_command: -v $HOME/.kube/config:$HOME/.kube/config
   download_template:
     x86_64: https://github.com/doitintl/kube-no-trouble/releases/download/{VERSION}/kubent-{VERSION}-linux-amd64.tar.gz
     aarch64: https://github.com/doitintl/kube-no-trouble/releases/download/{VERSION}/kubent-{VERSION}-linux-arm64.tar.gz
