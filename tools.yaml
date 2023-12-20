@@ -27,6 +27,7 @@ tools:
   version: v0.6.4
   verify_command: kubeconform -v
   docker_command: -v $HOME/.kube/config:$HOME/.kube/config
+  interactive: false
   download_template:
     x86_64: https://github.com/yannh/kubeconform/releases/download/{VERSION}/kubeconform-linux-amd64.tar.gz
     aarch64: https://github.com/yannh/kubeconform/releases/download/{VERSION}/kubeconform-linux-arm64.tar.gz

@@ -12,15 +12,14 @@ DOCKER_IMAGE = "ghcr.io/skaronator/devops-toolbox:latest"
 
 def process_tool(tool: Tool, output_dir) -> str:
     arch = platform.machine()
-    name = tool['name']
-    docker_command = tool.get('docker_command', "")
+    name = tool.name
 
-    version = tool['version']
+    version = tool.version
     # remove v prefix from version number
     version_number = version.lstrip('v')
 
-    verify_command = tool['verify_command']
-    download_template = tool['download_template'][arch]
+    verify_command = tool.verify_command
+    download_template = tool.download_template[arch]
     download_url = download_template.format(VERSION=version, VERSION_NUMBER=version_number)
 
     print(f"{'=' * 25} Installing {name} @ {version} {'=' * 25}")
@@ -30,7 +29,22 @@ def process_tool(tool: Tool, output_dir) -> str:
 
     print(f"{'=' * 25} Successfully installed {name}! {'=' * 25}")
 
-    alias_command = f"alias '{name}'='docker run -it --rm -e HOME -e USER -v $PWD:/workdir {docker_command} {DOCKER_IMAGE} {name}'"
+    cmd = [
+        "docker",
+        "run",
+        "--tty" if tool.tty else "",
+        "--interactive" if tool.interactive else "",
+        "--rm",
+        "-e", "HOME",
+        "-e", "USER",
+        "-v", "$PWD:/workdir",
+        tool.docker_command,
+        DOCKER_IMAGE,
+        name,
+    ]
+    # remove empty strings from cmd
+    cmd = [x for x in cmd if x.strip()]
+    alias_command = f"alias '{name}'='{' '.join(cmd)}'"
     return alias_command
 
 
@@ -43,11 +57,13 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     with open(args.tools, 'r') as file:
-        tools: ToolList = yaml.safe_load(file)
+        tools_data = yaml.safe_load(file)
+
+    tools: ToolList = [Tool(**tool_data) for tool_data in tools_data['tools']]
 
     all_alias = "#!/bin/sh" + "\n"
     all_alias += f"alias 'toolbox-update'='docker pull {DOCKER_IMAGE}'" + "\n"
-    for tool in tools['tools']:
+    for tool in tools:
         alias = process_tool(tool, args.output)
         all_alias += alias + "\n"
 
