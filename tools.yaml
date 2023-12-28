@@ -16,7 +16,7 @@ tools:
     aarch64: https://github.com/k0sproject/k0sctl/releases/download/{VERSION}/k0sctl-linux-arm64
 - name: k9s
   repository: derailed/k9s
-  version: v0.30.4
+  version: v0.30.5
   verify_command: k9s version
   docker_command: -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/.kube/config:$HOME/.kube/config -v $HOME/.config/k9s:$HOME/.config/k9s
   download_template:
