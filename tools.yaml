@@ -41,7 +41,7 @@ tools:
     aarch64: https://dl.k8s.io/release/{VERSION}/bin/linux/arm64/kubectl
 - name: tofu
   repository: opentofu/opentofu
-  version: v1.6.0-beta5
+  version: v1.6.0-rc1
   verify_command: tofu -version
   docker_command: -v $HOME/.aws:$HOME/.aws -v $HOME/.kube/config:$HOME/.kube/config
   download_template:
@@ -85,3 +85,11 @@ tools:
   download_template:
     x86_64: https://github.com/doitintl/kube-no-trouble/releases/download/{VERSION}/kubent-{VERSION}-linux-amd64.tar.gz
     aarch64: https://github.com/doitintl/kube-no-trouble/releases/download/{VERSION}/kubent-{VERSION}-linux-arm64.tar.gz
+- name: atuin
+  repository: atuinsh/atuin
+  version: v17.1.0
+  verify_command: atuin --version
+  docker_command: -v $HOME/.config/atuin:$HOME/.config/atuin -v $HOME/.local/share/atuin:$HOME/.local/share/atuin
+  download_template:
+    x86_64: https://github.com/atuinsh/atuin/releases/download/{VERSION}/atuin-{VERSION}-x86_64-unknown-linux-gnu.tar.gz
+    aarch64: https://github.com/atuinsh/atuin/releases/download/{VERSION}/atuin-{VERSION}-aarch64-unknown-linux-gnu.tar.gz

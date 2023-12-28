@@ -33,6 +33,8 @@ def fetch_tool(output_dir, url, name):
                 if name in os.path.basename(member.name):
                     with tar_ref.extractfile(member) as src, open(output_file, 'wb') as dst:
                         dst.write(src.read())
+                    # exit after first match
+                    break
 
     else:
         shutil.move(file_path, output_file)
