@@ -73,6 +73,7 @@ tools:
   repository: helm/helm
   version: v3.13.3
   verify_command: helm version
+  docker_command: -v $HOME/.kube/config:$HOME/.kube/config
   download_template:
     x86_64: https://get.helm.sh/helm-{VERSION}-linux-amd64.tar.gz
     aarch64: https://get.helm.sh/helm-{VERSION}-linux-arm64.tar.gz

@@ -61,8 +61,15 @@ if __name__ == '__main__':
 
     tools: ToolList = [Tool(**tool_data) for tool_data in tools_data['tools']]
 
-    all_alias = "#!/bin/sh" + "\n"
-    all_alias += f"alias 'toolbox-update'='docker pull {DOCKER_IMAGE}'" + "\n"
+    all_alias = f"""#!/bin/sh
+alias toolbox-update='
+    echo "Updating DevOps Toolbox"
+    docker pull {DOCKER_IMAGE}
+    [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc" && echo "Reloaded .bashrc"
+    echo "Update completed!"
+'
+"""
+
     for tool in tools:
         alias = process_tool(tool, args.output)
         all_alias += alias + "\n"
