@@ -2,7 +2,6 @@
 import os
 import yaml
 import argparse
-import platform
 from builder.types import Tool, ToolList
 from builder.fetch import fetch_tool
 from builder.verify import verify_tool
@@ -10,22 +9,18 @@ from builder.verify import verify_tool
 DOCKER_IMAGE = "ghcr.io/skaronator/devops-toolbox:latest"
 
 
-def process_tool(tool: Tool, output_dir) -> str:
-    arch = platform.machine()
+def process_tool(tool: Tool, output_dir) -> str | None:
     name = tool.name
+    download_url = tool.get_download_url()
 
-    version = tool.version
-    # remove v prefix from version number
-    version_number = version.lstrip('v')
+    if download_url is None:
+        print(f"{'=' * 25} Skipping {name} - Download not available for this plattform {'=' * 25}")
+        return
 
-    verify_command = tool.verify_command
-    download_template = tool.download_template[arch]
-    download_url = download_template.format(VERSION=version, VERSION_NUMBER=version_number)
-
-    print(f"{'=' * 25} Installing {name} @ {version} {'=' * 25}")
+    print(f"{'=' * 25} Installing {name} @ {tool.version} {'=' * 25}")
 
     fetch_tool(output_dir, download_url, name)
-    verify_tool(output_dir, verify_command)
+    verify_tool(output_dir, tool.verify_command)
 
     print(f"{'=' * 25} Successfully installed {name}! {'=' * 25}")
 
@@ -76,7 +71,8 @@ alias toolbox-update='
 
     for tool in tools:
         alias = process_tool(tool, args.output)
-        all_alias += alias + "\n"
+        if alias:
+            all_alias += alias + "\n"
 
     load_alias_file = os.path.join(args.output, "alias")
     with open(load_alias_file, "w", newline="\n") as file:

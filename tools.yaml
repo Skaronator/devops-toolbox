@@ -92,4 +92,5 @@ tools:
   docker_command: -v $HOME/.config/atuin:$HOME/.config/atuin -v $HOME/.local/share/atuin:$HOME/.local/share/atuin
   download_template:
     x86_64: https://github.com/atuinsh/atuin/releases/download/{VERSION}/atuin-{VERSION}-x86_64-unknown-linux-musl.tar.gz
-    aarch64: https://github.com/atuinsh/atuin/releases/download/{VERSION}/atuin-{VERSION}-aarch64-unknown-linux-gnu.tar.gz
+    # musl currently not available for arm64 musl
+    # aarch64: https://github.com/atuinsh/atuin/releases/download/{VERSION}/atuin-{VERSION}-aarch64-unknown-linux-musl.tar.gz
