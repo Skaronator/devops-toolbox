@@ -61,11 +61,15 @@ if __name__ == '__main__':
 
     tools: ToolList = [Tool(**tool_data) for tool_data in tools_data['tools']]
 
-    all_alias = f"""#!/bin/sh
+    all_alias = f"""#!/bin/env sh
 alias toolbox-update='
     echo "Updating DevOps Toolbox"
     docker pull {DOCKER_IMAGE}
-    [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc" && echo "Reloaded .bashrc"
+    if [ "$(basename "$SHELL")" = "zsh" ]; then
+        [ -f "$HOME/.zshrc" ] && . "$HOME/.zshrc" && echo "Reloaded .zshrc"
+    else
+        [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc" && echo "Reloaded .bashrc"
+    fi
     echo "Update completed!"
 '
 """
