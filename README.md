@@ -7,7 +7,7 @@ The DevOps-Toolbox contains all usefull and up-to-date tools for my day to day w
 Adding the following line does the complete setup:
 
 ```bash
-source <(docker run -e SHELL ghcr.io/skaronator/devops-toolbox:latest)
+eval "$(docker run -e SHELL ghcr.io/skaronator/devops-toolbox:latest)"
 ```
 
 You can then update the container running `toolbox-update` which basically just do a Docker pull command.
