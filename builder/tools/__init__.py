@@ -1,4 +1,3 @@
-import platform
 import os
 import requests
 import zipfile
@@ -7,10 +6,7 @@ import tempfile
 import shutil
 import subprocess
 
-ARCH = platform.machine()
 DOCKER_IMAGE = "ghcr.io/skaronator/devops-toolbox:latest"
-
-print(ARCH)
 
 
 class Tool:
@@ -21,6 +17,7 @@ class Tool:
         verify_command: str,
         download_template: dict[str, str],
         output_dir: str,
+        architecture: str,
         repository: str = "",
         docker_command: str = "",
         tty: bool = True,
@@ -34,11 +31,12 @@ class Tool:
         self.repository = repository
         self.tty = tty
         self.interactive = interactive
+        self.architecture = architecture
         self.url = self.get_download_url(download_template)
 
     def process(self) -> str | None:
         if self.url is None:
-            print(f"{'=' * 25} Skipping {self.name} - Download not available for {ARCH} plattform {'=' * 25}")
+            print(f"{'=' * 25} Skipping {self.name} - Download not available for {self.architecture} plattform {'=' * 25}")
             return
 
         self.fetch_tool()
@@ -49,7 +47,7 @@ class Tool:
     def get_download_url(self, download_template) -> str | None:
         # remove v prefix from version number
         version_number = self.version.lstrip('v')
-        download_template = download_template.get(ARCH)
+        download_template = download_template.get(self.architecture)
         if download_template is None:
             return None
         url = download_template.format(VERSION=self.version, VERSION_NUMBER=version_number)
