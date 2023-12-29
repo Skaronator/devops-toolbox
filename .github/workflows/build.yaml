@@ -8,15 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        architecture: [x86_64, aarch64]
-        include:
-        - architecture: x86_64
-          platforms: linux/amd64
-        - architecture: aarch64
-          platforms: linux/arm64
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4.1.1
@@ -32,7 +23,7 @@ jobs:
 
       - name: Run builder
         run: |
-          python builder/main.py --architecture=${{ matrix.architecture }}
+          python builder/main.py
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3.0.0
@@ -44,4 +35,3 @@ jobs:
         uses: docker/build-push-action@v5.1.0
         with:
           context: .
-          platforms: ${{ matrix.platforms }}
