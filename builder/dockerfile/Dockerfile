@@ -1,4 +1,4 @@
-FROM alpine:3.19
+FROM alpine:3.19.0
 
 ENV PATH="/app:${PATH}"
 
@@ -6,8 +6,6 @@ WORKDIR /workdir
 
 # Fix limit color range
 ENV TERM="xterm-256color"
-
-# <<INJECT>>
 
 # add xclíp for k9s
 # add git for kustomize/kubectl/kubeconform

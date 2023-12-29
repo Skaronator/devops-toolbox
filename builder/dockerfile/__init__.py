@@ -15,12 +15,18 @@ def generate_dockerfile(tools_dir, dockerfile_path):
     relative_tools_dir = os.path.relpath(tools_dir, common_part)
 
     # Generate COPY commands for the top 10 files
-    dockerfile_content += "\n" + "\n".join([f"COPY {relative_tools_dir}/{f} /app/{f}" for f in top_files])
+    copy_commands = "\n" + "\n".join([f"COPY {relative_tools_dir}/{f} /app/{f}" for f in top_files])
 
     # Generate a single COPY command for all other files
     other_files = set(files) - set(top_files)
     if other_files:
-        dockerfile_content += "\n" + f"COPY {f' {relative_tools_dir}/'.join(other_files)} /app/"
+        copy_commands += "\n" + f"COPY {f' {relative_tools_dir}/'.join(other_files)} /app/"
+
+    # Insert all copy_commands between 1st and 2nd line of original Dockerfile to improve caching
+    dockerfile_lines = dockerfile_content.split('\n')
+    first_line = dockerfile_lines[0]
+    rest_of_dockerfile = '\n'.join(dockerfile_lines[1:])
+    content = first_line + '\n' + copy_commands + '\n' + rest_of_dockerfile
 
     with open(dockerfile_path, 'w') as output_file:
-        output_file.write(dockerfile_content)
+        output_file.write(content)
