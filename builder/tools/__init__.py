@@ -10,6 +10,8 @@ import subprocess
 ARCH = platform.machine()
 DOCKER_IMAGE = "ghcr.io/skaronator/devops-toolbox:latest"
 
+print(ARCH)
+
 
 class Tool:
     def __init__(
