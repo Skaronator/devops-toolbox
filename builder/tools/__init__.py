@@ -5,6 +5,7 @@ import tarfile
 import tempfile
 import shutil
 import subprocess
+import time
 
 DOCKER_IMAGE = "ghcr.io/skaronator/devops-toolbox:latest"
 
@@ -81,6 +82,8 @@ class Tool:
 
         print(f"Adding chmod +x to {output_file}")
         os.chmod(output_file, 0o755)
+        static_time = time.mktime((2077, 1, 1, 0, 0, 0, 0, 0, 0))
+        os.utime(output_file, times=(static_time, static_time))
 
     def verify_tool(self) -> None:
         original_path = os.environ['PATH']
