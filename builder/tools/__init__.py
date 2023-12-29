@@ -93,7 +93,7 @@ class Tool:
             print(result.stdout)
         except subprocess.CalledProcessError as e:
             print(f"Error running the command: {e.stderr}")
-
+            raise e
         finally:
             # Restore the original PATH
             os.environ['PATH'] = original_path
@@ -107,6 +107,7 @@ class Tool:
             "--tty" if self.tty else "",
             "--interactive" if self.interactive else "",
             "--rm",
+            "--network", "host",
             "-e", "HOME",
             "-e", "USER",
             "-v", "$PWD:/workdir",
