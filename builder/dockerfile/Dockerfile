@@ -7,6 +7,8 @@ WORKDIR /workdir
 # Fix limit color range
 ENV TERM="xterm-256color"
 
+# <<INJECT>>
+
 # add xclíp for k9s
 # add git for kustomize/kubectl/kubeconform
 RUN apk update && \
