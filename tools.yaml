@@ -14,7 +14,7 @@ tools:
   repository: derailed/k9s
   version: v0.30.6
   verify_command: k9s version
-  docker_command: -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/.kube/config:$HOME/.kube/config -v $HOME/.config/k9s:$HOME/.config/k9s
+  docker_command: -e DISPLAY -e KUBE_EDITOR -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/.kube/config:$HOME/.kube/config -v $HOME/.config/k9s:$HOME/.config/k9s -v $HOME/.local/state/k9s:$HOME/.local/state/k9s
   download_template: https://github.com/derailed/k9s/releases/download/{VERSION}/k9s_Linux_amd64.tar.gz
 - name: kubeconform
   repository: yannh/kubeconform
