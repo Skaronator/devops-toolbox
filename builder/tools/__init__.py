@@ -113,6 +113,7 @@ class Tool:
             "--network=host",
             "--user=\"$(id -u):$(id -g)\"",
             "-e", "HOME",
+            "-e", "USER",
             "-v", "$PWD:/workdir",
             self.docker_command,
             DOCKER_IMAGE,
