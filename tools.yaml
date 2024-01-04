@@ -7,7 +7,7 @@ tools:
   download_template: https://github.com/argoproj/argo-cd/releases/download/{VERSION}/argocd-linux-amd64
 - name: k0sctl
   repository: k0sproject/k0sctl
-  version: v0.17.0
+  version: v0.17.1
   verify_command: k0sctl version
   download_template: https://github.com/k0sproject/k0sctl/releases/download/{VERSION}/k0sctl-linux-x64
 - name: k9s
