@@ -7,8 +7,6 @@ import shutil
 import subprocess
 import time
 
-DOCKER_IMAGE = "ghcr.io/skaronator/devops-toolbox:latest"
-
 
 class Tool:
     def __init__(
@@ -18,6 +16,7 @@ class Tool:
         verify_command: str,
         download_template: dict[str, str],
         output_dir: str,
+        docker_image: str,
         repository: str = "",
         docker_command: str = "",
         tty: bool = True,
@@ -27,6 +26,7 @@ class Tool:
         self.version = version
         self.verify_command = verify_command
         self.docker_command = docker_command
+        self.docker_image = docker_image
         self.output_dir = output_dir
         self.repository = repository
         self.tty = tty
@@ -116,7 +116,7 @@ class Tool:
             "-e", "USER",
             "-v", "$PWD:/workdir",
             self.docker_command,
-            DOCKER_IMAGE,
+            self.docker_image,
             self.name,
         ]
         # remove empty strings from cmd
