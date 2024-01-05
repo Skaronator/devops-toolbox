@@ -67,7 +67,7 @@ jobs:
       uses: docker/metadata-action@v5.5.0
       with:
         images: |
-          ghcr.io/Skaronator/devops-toolbox
+          ghcr.io/skaronator/devops-toolbox
         tags: |
           type=raw,value=${{ steps.version.outputs.new_version }}
           type=raw,value=latest
