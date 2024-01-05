@@ -71,11 +71,6 @@ jobs:
         tags: |
           type=raw,value=${{ steps.version.outputs.new_version }}
           type=raw,value=latest
-        labels: |
-          org.opencontainers.image.title=devops-toolbox
-          org.opencontainers.image.source=https://github.com/Skaronator/devops-toolbox
-          org.opencontainers.image.description=Toolbox that contains all useful DevOps tools for my day to day job.
-          org.opencontainers.image.vendor=Skaronator
 
     - name: Get tool versions          
       uses: mikefarah/yq@v4.40.5
@@ -99,7 +94,6 @@ jobs:
         push: true
         provenance: false
         tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
 
     - name: Release
       uses: softprops/action-gh-release@v1

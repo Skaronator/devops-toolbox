@@ -1,5 +1,10 @@
 FROM alpine:3.19.0
 
+LABEL org.opencontainers.image.title="devops-toolbox" \
+      org.opencontainers.image.source="https://github.com/Skaronator/devops-toolbox" \
+      org.opencontainers.image.description="Toolbox that contains all useful DevOps tools for my day to day job." \
+      org.opencontainers.image.vendor="Skaronator"
+
 ENV PATH="/app:${PATH}"
 
 WORKDIR /workdir
