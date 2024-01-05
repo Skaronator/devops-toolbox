@@ -74,4 +74,4 @@ tools:
   version: v0.11.0
   verify_command: dive version
   docker_command: -v /var/run/docker.sock:/var/run/docker.sock
-  download_template: https://github.com/wagoodman/dive/releases/download/v0.11.0/dive_0.11.0_linux_amd64.tar.gz
+  download_template: https://github.com/wagoodman/dive/releases/download/{VERSION}/dive_{VERSION_NUMBER}_linux_amd64.tar.gz
