@@ -18,17 +18,19 @@ class Tool:
         output_dir: str,
         docker_image: str,
         repository: str = "",
-        docker_command: str = "",
+        envs: dict[str, str] = {},
+        volumes: dict[str, str] = {},
         tty: bool = True,
         interactive: bool = True,
     ):
         self.name = name
         self.version = version
         self.verify_command = verify_command
-        self.docker_command = docker_command
         self.docker_image = docker_image
         self.output_dir = output_dir
         self.repository = repository
+        self.envs = envs
+        self.volumes = volumes
         self.tty = tty
         self.interactive = interactive
         self.url = self.get_download_url(download_template)
@@ -104,6 +106,9 @@ class Tool:
         print(f"{'=' * 25} Successfully installed {self.name}! {'=' * 25}")
 
     def get_alias_command(self):
+        envs = " ".join(f"-e {k}={v}" for k, v in self.envs.items())
+        volumes = " ".join(f"-v {s}:{d}" for s, d in self.volumes.items())
+
         cmd = [
             "docker",
             "run",
@@ -114,8 +119,9 @@ class Tool:
             "--user=\"$(id -u):$(id -g)\"",
             "-e", "HOME",
             "-e", "USER",
+            envs,
             "-v", "$PWD:/workdir",
-            self.docker_command,
+            volumes,
             self.docker_image,
             self.name,
         ]
