@@ -22,7 +22,14 @@ if __name__ == '__main__':
     with open(args.tools, 'r') as file:
         tools_data = yaml.safe_load(file)
 
-    tools = [Tool(output_dir=output_dir, docker_image=docker_image, **tool_data) for tool_data in tools_data['tools']]
+    tools = []
+    for tool_data in tools_data['tools']:
+        tool = Tool(
+            output_dir=output_dir,
+            docker_image=docker_image,
+            **tool_data
+        )
+        tools.append(tool)
 
     all_alias = f"""#!/bin/env sh
 alias toolbox-update='
