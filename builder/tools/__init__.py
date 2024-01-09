@@ -20,8 +20,8 @@ class Tool:
         repository: str = "",
         envs: dict[str, str] = {},
         volumes: dict[str, str] = {},
-        tty: bool = True,
-        interactive: bool = True,
+        tty: bool = False,
+        interactive: bool = False,
     ):
         self.name = name
         self.version = version
