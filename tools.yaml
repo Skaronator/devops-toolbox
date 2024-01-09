@@ -6,7 +6,7 @@ tools:
   download_template: https://github.com/argoproj/argo-cd/releases/download/{VERSION}/argocd-linux-amd64
 - name: k0sctl
   repository: k0sproject/k0sctl
-  version: v0.17.2
+  version: v0.17.3
   verify_command: k0sctl version
   envs:
     $SSH_AUTH_SOCK: $SSH_AUTH_SOCK
