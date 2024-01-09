@@ -120,6 +120,7 @@ class Tool:
             "-e", "HOME",
             "-e", "USER",
             envs,
+            "-v", "$HOME:$HOME",
             "-v", "$PWD:/workdir",
             volumes,
             self.docker_image,
