@@ -16,6 +16,6 @@ ENV TERM="xterm-256color"
 CMD ["cat", "/app/alias"]
 
 # add xclíp, nano for k9s
-# add git for kustomize/kubectl/kubeconform
-RUN apk update && \
-    apk add --no-cache xclip git nano
+# add git for kustomize/kubectl/kubeconform/helm
+# add docker-cli for dive
+RUN apk add --update --no-cache xclip git nano docker-cli
