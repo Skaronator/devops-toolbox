@@ -3,7 +3,8 @@ tools:
   repository: argoproj/argo-cd
   version: v2.9.3
   verify_command: argocd version --client
-  docker_command: -v $HOME/.config/argocd:$HOME/.config/argocd
+  volumes:
+    $HOME/.config/argocd: $HOME/.config/argocd
   download_template: https://github.com/argoproj/argo-cd/releases/download/{VERSION}/argocd-linux-amd64
 - name: k0sctl
   repository: k0sproject/k0sctl
@@ -14,32 +15,47 @@ tools:
   repository: derailed/k9s
   version: v0.31.1
   verify_command: k9s version
-  docker_command: -e DISPLAY -e KUBE_EDITOR -e XDG_DATA_DIRS=$HOME/.local/share -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/.kube/config:$HOME/.kube/config -v $HOME/.config/k9s:$HOME/.config/k9s -v $HOME/.local/state/k9s:$HOME/.local/state/k9s -v $HOME/.local/share/k9s:$HOME/.local/share/k9s
+  envs:
+    DISPLAY: $DISPLAY
+    KUBE_EDITOR: $KUBE_EDITOR
+    XDG_DATA_DIRS: $HOME/.local/share
+  volumes:
+    /tmp/.X11-unix: /tmp/.X11-unix
+    $HOME/.kube/config: $HOME/.kube/config
+    $HOME/.config/k9s: $HOME/.config/k9s
+    $HOME/.local/state/k9s: $HOME/.local/state/k9s
+    $HOME/.local/share/k9s: $HOME/.local/share/k9s
   download_template: https://github.com/derailed/k9s/releases/download/{VERSION}/k9s_Linux_amd64.tar.gz
 - name: kubeconform
   repository: yannh/kubeconform
   version: v0.6.4
   verify_command: kubeconform -v
-  docker_command: -v $HOME/.kube/config:$HOME/.kube/config
+  volumes:
+    $HOME/.kube/config: $HOME/.kube/config
   interactive: false
   download_template: https://github.com/yannh/kubeconform/releases/download/{VERSION}/kubeconform-linux-amd64.tar.gz
 - name: kubectl
   repository: kubernetes/kubernetes
   version: v1.29.0
   verify_command: kubectl version --client
-  docker_command: -v $HOME/.kube/config:$HOME/.kube/config
+  volumes:
+    $HOME/.kube/config: $HOME/.kube/config
   download_template: https://dl.k8s.io/release/{VERSION}/bin/linux/amd64/kubectl
 - name: tofu
   repository: opentofu/opentofu
   version: v1.6.0-rc1
   verify_command: tofu -version
-  docker_command: -v $HOME/.aws:$HOME/.aws -v $HOME/.kube/config:$HOME/.kube/config
+  volumes:
+    $HOME/.aws: $HOME/.aws
+    $HOME/.kube/config: $HOME/.kube/config
   download_template: https://github.com/opentofu/opentofu/releases/download/{VERSION}/tofu_{VERSION_NUMBER}_linux_amd64.zip
 - name: terraform
   repository: hashicorp/terraform
   version: v1.6.6
   verify_command: terraform --version
-  docker_command: -v $HOME/.aws:$HOME/.aws -v $HOME/.kube/config:$HOME/.kube/config
+  volumes:
+    $HOME/.aws: $HOME/.aws
+    $HOME/.kube/config: $HOME/.kube/config
   download_template: https://releases.hashicorp.com/terraform/{VERSION_NUMBER}/terraform_{VERSION_NUMBER}_linux_amd64.zip
 - name: vault
   repository: hashicorp/vault
@@ -55,23 +71,27 @@ tools:
   repository: helm/helm
   version: v3.13.3
   verify_command: helm version
-  docker_command: -v $HOME/.kube/config:$HOME/.kube/config
+  volumes:
+    $HOME/.kube/config: $HOME/.kube/config
   download_template: https://get.helm.sh/helm-{VERSION}-linux-amd64.tar.gz
 - name: kubent
   repository: doitintl/kube-no-trouble
   version: v0.7.1
   verify_command: kubent --version
-  docker_command: -v $HOME/.kube/config:$HOME/.kube/config
+  volumes:
+    $HOME/.kube/config: $HOME/.kube/config
   download_template: https://github.com/doitintl/kube-no-trouble/releases/download/{VERSION}/kubent-{VERSION}-linux-amd64.tar.gz
 - name: kubefwd
   repository: txn2/kubefwd
   version: 1.22.5
   verify_command: kubefwd version
-  docker_command: -v $HOME/.kube/config:$HOME/.kube/config
+  volumes:
+    $HOME/.kube/config: $HOME/.kube/config
   download_template: https://github.com/txn2/kubefwd/releases/download/{VERSION}/kubefwd_Linux_x86_64.tar.gz
 - name: dive
   repository: wagoodman/dive
   version: v0.11.0
   verify_command: dive version
-  docker_command: -v /var/run/docker.sock:/var/run/docker.sock
+  volumes:
+    /var/run/docker.sock: /var/run/docker.sock
   download_template: https://github.com/wagoodman/dive/releases/download/{VERSION}/dive_{VERSION_NUMBER}_linux_amd64.tar.gz
