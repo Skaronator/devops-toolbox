@@ -17,6 +17,7 @@ tools:
   repository: derailed/k9s
   version: v0.31.1
   verify_command: k9s version
+  interactive: true
   envs:
     DISPLAY: $DISPLAY
     KUBE_EDITOR: $KUBE_EDITOR
@@ -28,7 +29,6 @@ tools:
   repository: yannh/kubeconform
   version: v0.6.4
   verify_command: kubeconform -v
-  interactive: false
   download_template: https://github.com/yannh/kubeconform/releases/download/{VERSION}/kubeconform-linux-amd64.tar.gz
 - name: kubectl
   repository: kubernetes/kubernetes

@@ -21,7 +21,7 @@ class Tool:
         envs: dict[str, str] = {},
         volumes: dict[str, str] = {},
         tty: bool = True,
-        interactive: bool = True,
+        interactive: bool = False,
     ):
         self.name = name
         self.version = version
