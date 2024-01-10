@@ -39,7 +39,7 @@ tools:
   download_template: https://dl.k8s.io/release/{VERSION}/bin/linux/amd64/kubectl
 - name: tofu
   repository: opentofu/opentofu
-  version: v1.6.0-rc1
+  version: v1.6.0
   verify_command: tofu -version
   download_template: https://github.com/opentofu/opentofu/releases/download/{VERSION}/tofu_{VERSION_NUMBER}_linux_amd64.zip
 - name: terraform
