@@ -4,6 +4,7 @@ tools:
   version: v2.9.3
   verify_command: argocd version --client
   download_template: https://github.com/argoproj/argo-cd/releases/download/{VERSION}/argocd-linux-amd64
+  tty: true
 - name: k0sctl
   repository: k0sproject/k0sctl
   version: v0.17.3
@@ -71,13 +72,6 @@ tools:
   version: 1.22.5
   verify_command: kubefwd version
   download_template: https://github.com/txn2/kubefwd/releases/download/{VERSION}/kubefwd_Linux_x86_64.tar.gz
-- name: dive
-  repository: wagoodman/dive
-  version: v0.11.0
-  verify_command: dive version
-  volumes:
-    /var/run/docker.sock: /var/run/docker.sock
-  download_template: https://github.com/wagoodman/dive/releases/download/{VERSION}/dive_{VERSION_NUMBER}_linux_amd64.tar.gz
 - name: scw
   repository: scaleway/scaleway-cli
   version: v2.26.0
