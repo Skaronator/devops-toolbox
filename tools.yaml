@@ -7,7 +7,7 @@ tools:
   tty: true
 - name: k0sctl
   repository: k0sproject/k0sctl
-  version: v0.17.3
+  version: v0.17.4
   verify_command: k0sctl version
   envs:
     $SSH_AUTH_SOCK: $SSH_AUTH_SOCK
