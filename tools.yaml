@@ -10,6 +10,7 @@ tools:
   version: v0.17.4
   verify_command: k0sctl version
   envs:
+    DISABLE_TELEMETRY: true
     $SSH_AUTH_SOCK: $SSH_AUTH_SOCK
   volumes:
     $SSH_AUTH_SOCK: $SSH_AUTH_SOCK
