@@ -78,3 +78,8 @@ tools:
   version: v2.26.0
   verify_command: scw version
   download_template: https://github.com/scaleway/scaleway-cli/releases/download/{VERSION}/scaleway-cli_{VERSION_NUMBER}_linux_amd64
+- name: kubeseal
+  repository: bitnami-labs/sealed-secrets
+  version: v0.24.5
+  verify_command: kubeseal --version
+  download_template: https://github.com/bitnami-labs/sealed-secrets/releases/download/{VERSION}/kubeseal-{VERSION_NUMBER}-linux-amd64.tar.gz
