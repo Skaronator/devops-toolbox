@@ -83,9 +83,9 @@ tools:
   version: v0.24.5
   verify_command: kubeseal --version
   download_template: https://github.com/bitnami-labs/sealed-secrets/releases/download/{VERSION}/kubeseal-{VERSION_NUMBER}-linux-amd64.tar.gz
-- name: kubectl-oidc-login
+- name: kubectl-oidc_login
   repository: int128/kubelogin
   version: v1.28.0
-  verify_command: kubectl-oidc-login --version
+  verify_command: kubectl-oidc_login --version
   download_template: https://github.com/int128/kubelogin/releases/download/{VERSION}/kubelogin_linux_amd64.zip
   download_filename: kubelogin
