@@ -70,7 +70,12 @@ class Tool:
         if file_path.endswith(".zip"):
             print(f"Extacting {self.download_filename} from {file_path} to {self.output_dir}")
             with zipfile.ZipFile(file_path, 'r') as zip_ref:
-                zip_ref.extract(self.download_filename, self.output_dir)
+                for member in zip_ref.infolist():
+                    if self.download_filename in os.path.basename(member.filename):
+                        with zip_ref.open(member) as src, open(output_file, 'wb') as dst:
+                            dst.write(src.read())
+                        break  # exit after first match
+
         elif file_path.endswith(".tar.gz"):
             print(f"Extacting {self.download_filename} from {file_path} to {self.output_dir}")
             with tarfile.open(file_path, 'r:gz') as tar_ref:
@@ -78,8 +83,7 @@ class Tool:
                     if self.download_filename in os.path.basename(member.name):
                         with tar_ref.extractfile(member) as src, open(output_file, 'wb') as dst:
                             dst.write(src.read())
-                        # exit after first match
-                        break
+                        break  # exit after first match
 
         else:
             shutil.move(file_path, output_file)
