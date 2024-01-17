@@ -20,7 +20,8 @@ def generate_dockerfile(tools_dir, dockerfile_path):
     # Generate a single COPY command for all other files
     other_files = set(files) - set(top_files)
     if other_files:
-        copy_commands += "\n" + f"COPY {f' {relative_tools_dir}/'.join(other_files)} /app/"
+        all_files = ' '.join([f'{relative_tools_dir}/{file}' for file in other_files])
+        copy_commands += "\n" + f"COPY {all_files} /app/"
 
     # Insert all copy_commands between 1st and 2nd line of original Dockerfile to improve caching
     dockerfile_lines = dockerfile_content.split('\n')
