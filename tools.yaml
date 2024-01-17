@@ -89,3 +89,8 @@ tools:
   verify_command: kubectl-oidc_login --version
   download_template: https://github.com/int128/kubelogin/releases/download/{VERSION}/kubelogin_linux_amd64.zip
   download_filename: kubelogin
+- name: kubectl-cnpg
+  repository: cloudnative-pg/cloudnative-pg
+  version: v1.22.0
+  verify_command: kubectl-cnpg --version
+  download_template: https://github.com/cloudnative-pg/cloudnative-pg/releases/download/{VERSION}/kubectl-cnpg_{VERSION_NUMBER}_linux_x86_64.tar.gz
