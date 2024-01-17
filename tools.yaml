@@ -88,3 +88,4 @@ tools:
   version: v1.28.0
   verify_command: kubectl-oidc-login --version
   download_template: https://github.com/int128/kubelogin/releases/download/{VERSION}/kubelogin_linux_amd64.zip
+  download_filename: kubelogin
