@@ -14,10 +14,11 @@ class Tool:
         name: str,
         version: str | int,
         verify_command: str,
-        download_template: dict[str, str],
+        download_template: str,
         output_dir: str,
         docker_image: str,
         repository: str = "",
+        download_filename: str = "",
         envs: dict[str, str] = {},
         volumes: dict[str, str] = {},
         tty: bool = False,
@@ -34,6 +35,7 @@ class Tool:
         self.tty = tty
         self.interactive = interactive
         self.url = self.get_download_url(download_template)
+        self.download_filename = download_filename if download_filename else self.name
 
     def process(self) -> str | None:
         self.fetch_tool()
@@ -66,18 +68,22 @@ class Tool:
         print(f"Download successful. File saved to {file_path}")
 
         if file_path.endswith(".zip"):
-            print(f"Extacting {self.name} from {file_path} to {self.output_dir}")
+            print(f"Extacting {self.download_filename} from {file_path} to {self.output_dir}")
             with zipfile.ZipFile(file_path, 'r') as zip_ref:
-                zip_ref.extract(self.name, self.output_dir)
+                for member in zip_ref.infolist():
+                    if self.download_filename in os.path.basename(member.filename):
+                        with zip_ref.open(member) as src, open(output_file, 'wb') as dst:
+                            dst.write(src.read())
+                        break  # exit after first match
+
         elif file_path.endswith(".tar.gz"):
-            print(f"Extacting {self.name} from {file_path} to {self.output_dir}")
+            print(f"Extacting {self.download_filename} from {file_path} to {self.output_dir}")
             with tarfile.open(file_path, 'r:gz') as tar_ref:
                 for member in tar_ref.getmembers():
-                    if self.name in os.path.basename(member.name):
+                    if self.download_filename in os.path.basename(member.name):
                         with tar_ref.extractfile(member) as src, open(output_file, 'wb') as dst:
                             dst.write(src.read())
-                        # exit after first match
-                        break
+                        break  # exit after first match
 
         else:
             shutil.move(file_path, output_file)
