@@ -9,7 +9,7 @@ def generate_dockerfile(tools_dir, dockerfile_path):
 
     files = [f for f in os.listdir(tools_dir) if os.path.isfile(os.path.join(tools_dir, f))]
     files.sort(key=lambda f: os.path.getsize(os.path.join(tools_dir, f)), reverse=True)
-    top_files = files[:25]
+    top_files = files[:10]
 
     common_part = os.path.commonprefix([tools_dir, dockerfile_path])
     relative_tools_dir = os.path.relpath(tools_dir, common_part)
