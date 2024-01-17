@@ -92,5 +92,5 @@ tools:
 - name: kubectl-cnpg
   repository: cloudnative-pg/cloudnative-pg
   version: v1.22.0
-  verify_command: kubectl-cnpg --version
+  verify_command: kubectl-cnpg version
   download_template: https://github.com/cloudnative-pg/cloudnative-pg/releases/download/v{VERSION}/kubectl-cnpg_{VERSION}_linux_x86_64.tar.gz
