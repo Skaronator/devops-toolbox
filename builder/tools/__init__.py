@@ -48,7 +48,7 @@ class Tool:
         output_file = os.path.join(self.output_dir, self.name)
 
         print(f"{'=' * 25} Installing {self.name} @ {self.version} {'=' * 25}")
-
+        print(f"Downloading file from {self.url}")
         response = requests.get(self.url, stream=True)
         response.raise_for_status()
 
