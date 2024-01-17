@@ -25,7 +25,7 @@ class Tool:
         interactive: bool = False,
     ):
         self.name = name
-        self.version = version
+        self.version = version.lstrip('v')
         self.verify_command = verify_command
         self.docker_image = docker_image
         self.output_dir = output_dir
@@ -34,7 +34,7 @@ class Tool:
         self.volumes = volumes
         self.tty = tty
         self.interactive = interactive
-        self.url = self.get_download_url(download_template)
+        self.url = download_template.format(VERSION=self.version)
         self.download_filename = download_filename if download_filename else self.name
 
     def process(self) -> str | None:
@@ -42,12 +42,6 @@ class Tool:
         self.verify_tool()
         alias = self.get_alias_command()
         return alias
-
-    def get_download_url(self, download_template) -> str | None:
-        # remove v prefix from version number
-        version_number = self.version.lstrip('v')
-        url = download_template.format(VERSION=self.version, VERSION_NUMBER=version_number)
-        return url
 
     def fetch_tool(self) -> None:
         os.makedirs(self.output_dir, exist_ok=True)

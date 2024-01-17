@@ -3,7 +3,7 @@ tools:
   repository: argoproj/argo-cd
   version: v2.9.3
   verify_command: argocd version --client
-  download_template: https://github.com/argoproj/argo-cd/releases/download/{VERSION}/argocd-linux-amd64
+  download_template: https://github.com/argoproj/argo-cd/releases/download/v{VERSION}/argocd-linux-amd64
   tty: true
 - name: k0sctl
   repository: k0sproject/k0sctl
@@ -14,7 +14,7 @@ tools:
     $SSH_AUTH_SOCK: $SSH_AUTH_SOCK
   volumes:
     $SSH_AUTH_SOCK: $SSH_AUTH_SOCK
-  download_template: https://github.com/k0sproject/k0sctl/releases/download/{VERSION}/k0sctl-linux-x64
+  download_template: https://github.com/k0sproject/k0sctl/releases/download/v{VERSION}/k0sctl-linux-x64
 - name: k9s
   repository: derailed/k9s
   version: v0.31.5
@@ -27,47 +27,47 @@ tools:
     XDG_DATA_DIRS: $HOME/.local/share
   volumes:
     /tmp/.X11-unix: /tmp/.X11-unix
-  download_template: https://github.com/derailed/k9s/releases/download/{VERSION}/k9s_Linux_amd64.tar.gz
+  download_template: https://github.com/derailed/k9s/releases/download/v{VERSION}/k9s_Linux_amd64.tar.gz
 - name: kubeconform
   repository: yannh/kubeconform
   version: v0.6.4
   verify_command: kubeconform -v
-  download_template: https://github.com/yannh/kubeconform/releases/download/{VERSION}/kubeconform-linux-amd64.tar.gz
+  download_template: https://github.com/yannh/kubeconform/releases/download/v{VERSION}/kubeconform-linux-amd64.tar.gz
 - name: kubectl
   repository: kubernetes/kubernetes
   version: v1.29.0
   verify_command: kubectl version --client
-  download_template: https://dl.k8s.io/release/{VERSION}/bin/linux/amd64/kubectl
+  download_template: https://dl.k8s.io/release/v{VERSION}/bin/linux/amd64/kubectl
 - name: tofu
   repository: opentofu/opentofu
   version: v1.6.0
   verify_command: tofu -version
-  download_template: https://github.com/opentofu/opentofu/releases/download/{VERSION}/tofu_{VERSION_NUMBER}_linux_amd64.zip
+  download_template: https://github.com/opentofu/opentofu/releases/download/v{VERSION}/tofu_{VERSION}_linux_amd64.zip
 - name: terraform
   repository: hashicorp/terraform
   version: v1.6.6
   verify_command: terraform --version
-  download_template: https://releases.hashicorp.com/terraform/{VERSION_NUMBER}/terraform_{VERSION_NUMBER}_linux_amd64.zip
+  download_template: https://releases.hashicorp.com/terraform/{VERSION}/terraform_{VERSION}_linux_amd64.zip
 - name: vault
   repository: hashicorp/vault
   version: v1.15.4
   verify_command: vault --version
-  download_template: https://releases.hashicorp.com/vault/{VERSION_NUMBER}/vault_{VERSION_NUMBER}_linux_amd64.zip
+  download_template: https://releases.hashicorp.com/vault/{VERSION}/vault_{VERSION}_linux_amd64.zip
 - name: yq
   repository: mikefarah/yq
   version: v4.40.5
   verify_command: yq --version
-  download_template: https://github.com/mikefarah/yq/releases/download/{VERSION}/yq_linux_amd64
+  download_template: https://github.com/mikefarah/yq/releases/download/v{VERSION}/yq_linux_amd64
 - name: helm
   repository: helm/helm
   version: v3.13.3
   verify_command: helm version
-  download_template: https://get.helm.sh/helm-{VERSION}-linux-amd64.tar.gz
+  download_template: https://get.helm.sh/helm-v{VERSION}-linux-amd64.tar.gz
 - name: kubent
   repository: doitintl/kube-no-trouble
   version: v0.7.1
   verify_command: kubent --version
-  download_template: https://github.com/doitintl/kube-no-trouble/releases/download/{VERSION}/kubent-{VERSION}-linux-amd64.tar.gz
+  download_template: https://github.com/doitintl/kube-no-trouble/releases/download/v{VERSION}/kubent-v{VERSION}-linux-amd64.tar.gz
 - name: kubefwd
   repository: txn2/kubefwd
   version: 1.22.5
@@ -77,15 +77,20 @@ tools:
   repository: scaleway/scaleway-cli
   version: v2.26.0
   verify_command: scw version
-  download_template: https://github.com/scaleway/scaleway-cli/releases/download/{VERSION}/scaleway-cli_{VERSION_NUMBER}_linux_amd64
+  download_template: https://github.com/scaleway/scaleway-cli/releases/download/v{VERSION}/scaleway-cli_{VERSION}_linux_amd64
 - name: kubeseal
   repository: bitnami-labs/sealed-secrets
   version: v0.24.5
   verify_command: kubeseal --version
-  download_template: https://github.com/bitnami-labs/sealed-secrets/releases/download/{VERSION}/kubeseal-{VERSION_NUMBER}-linux-amd64.tar.gz
+  download_template: https://github.com/bitnami-labs/sealed-secrets/releases/download/v{VERSION}/kubeseal-{VERSION}-linux-amd64.tar.gz
 - name: kubectl-oidc_login
   repository: int128/kubelogin
   version: v1.28.0
   verify_command: kubectl-oidc_login --version
-  download_template: https://github.com/int128/kubelogin/releases/download/{VERSION}/kubelogin_linux_amd64.zip
+  download_template: https://github.com/int128/kubelogin/releases/download/v{VERSION}/kubelogin_linux_amd64.zip
   download_filename: kubelogin
+- name: kubectl-cnpg
+  repository: cloudnative-pg/cloudnative-pg
+  version: v1.22.0
+  verify_command: kubectl-cnpg version
+  download_template: https://github.com/cloudnative-pg/cloudnative-pg/releases/download/v{VERSION}/kubectl-cnpg_{VERSION}_linux_x86_64.tar.gz
