@@ -7,7 +7,7 @@ tools:
   tty: true
 - name: helm
   repository: helm/helm
-  version: v3.13.3
+  version: v3.14.0
   verify_command: helm version
   download_template: https://get.helm.sh/helm-v{VERSION}-linux-amd64.tar.gz
 - name: k0sctl
@@ -22,7 +22,7 @@ tools:
   download_template: https://github.com/k0sproject/k0sctl/releases/download/v{VERSION}/k0sctl-linux-x64
 - name: k9s
   repository: derailed/k9s
-  version: v0.31.5
+  version: v0.31.7
   verify_command: k9s version
   interactive: true
   tty: true
@@ -35,7 +35,7 @@ tools:
   download_template: https://github.com/derailed/k9s/releases/download/v{VERSION}/k9s_Linux_amd64.tar.gz
 - name: kubectl
   repository: kubernetes/kubernetes
-  version: v1.29.0
+  version: v1.29.1
   verify_command: kubectl version --client
   download_template: https://dl.k8s.io/release/v{VERSION}/bin/linux/amd64/kubectl
 - name: kubectl-cnpg
@@ -61,7 +61,7 @@ tools:
   download_template: https://github.com/yannh/kubeconform/releases/download/v{VERSION}/kubeconform-linux-amd64.tar.gz
 - name: kubeseal
   repository: bitnami-labs/sealed-secrets
-  version: v0.24.5
+  version: v0.25.0
   verify_command: kubeseal --version
   download_template: https://github.com/bitnami-labs/sealed-secrets/releases/download/v{VERSION}/kubeseal-{VERSION}-linux-amd64.tar.gz
 - name: scw
@@ -71,7 +71,7 @@ tools:
   download_template: https://github.com/scaleway/scaleway-cli/releases/download/v{VERSION}/scaleway-cli_{VERSION}_linux_amd64
 - name: terraform
   repository: hashicorp/terraform
-  version: v1.6.6
+  version: v1.7.0
   verify_command: terraform --version
   download_template: https://releases.hashicorp.com/terraform/{VERSION}/terraform_{VERSION}_linux_amd64.zip
 - name: tofu
