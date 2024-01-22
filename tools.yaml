@@ -37,6 +37,7 @@ tools:
   repository: kubernetes/kubernetes
   version: v1.29.1
   verify_command: kubectl version --client
+  interactive: true
   download_template: https://dl.k8s.io/release/v{VERSION}/bin/linux/amd64/kubectl
 - name: kubectl-cnpg
   repository: cloudnative-pg/cloudnative-pg
@@ -73,11 +74,13 @@ tools:
   repository: hashicorp/terraform
   version: v1.7.0
   verify_command: terraform --version
+  interactive: true
   download_template: https://releases.hashicorp.com/terraform/{VERSION}/terraform_{VERSION}_linux_amd64.zip
 - name: tofu
   repository: opentofu/opentofu
   version: v1.6.0
   verify_command: tofu -version
+  interactive: true
   download_template: https://github.com/opentofu/opentofu/releases/download/v{VERSION}/tofu_{VERSION}_linux_amd64.zip
 - name: vault
   repository: hashicorp/vault
