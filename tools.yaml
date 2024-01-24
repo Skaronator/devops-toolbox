@@ -1,7 +1,7 @@
 tools:
 - name: argocd
   repository: argoproj/argo-cd
-  version: v2.9.3
+  version: v2.9.5
   verify_command: argocd version --client
   download_template: https://github.com/argoproj/argo-cd/releases/download/v{VERSION}/argocd-linux-amd64
   tty: true
@@ -72,13 +72,13 @@ tools:
   download_template: https://github.com/scaleway/scaleway-cli/releases/download/v{VERSION}/scaleway-cli_{VERSION}_linux_amd64
 - name: terraform
   repository: hashicorp/terraform
-  version: v1.7.0
+  version: v1.7.1
   verify_command: terraform --version
   interactive: true
   download_template: https://releases.hashicorp.com/terraform/{VERSION}/terraform_{VERSION}_linux_amd64.zip
 - name: tofu
   repository: opentofu/opentofu
-  version: v1.6.0
+  version: v1.6.1
   verify_command: tofu -version
   interactive: true
   download_template: https://github.com/opentofu/opentofu/releases/download/v{VERSION}/tofu_{VERSION}_linux_amd64.zip
