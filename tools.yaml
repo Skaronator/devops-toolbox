@@ -41,7 +41,7 @@ tools:
   download_template: https://dl.k8s.io/release/v{VERSION}/bin/linux/amd64/kubectl
 - name: kubectl-cnpg
   repository: cloudnative-pg/cloudnative-pg
-  version: v1.22.0
+  version: v1.22.1
   verify_command: kubectl-cnpg version
   download_template: https://github.com/cloudnative-pg/cloudnative-pg/releases/download/v{VERSION}/kubectl-cnpg_{VERSION}_linux_x86_64.tar.gz
 - name: kubectl-oidc_login
@@ -72,7 +72,7 @@ tools:
   download_template: https://github.com/scaleway/scaleway-cli/releases/download/v{VERSION}/scaleway-cli_{VERSION}_linux_amd64
 - name: terraform
   repository: hashicorp/terraform
-  version: v1.7.1
+  version: v1.7.2
   verify_command: terraform --version
   interactive: true
   download_template: https://releases.hashicorp.com/terraform/{VERSION}/terraform_{VERSION}_linux_amd64.zip
