@@ -72,7 +72,7 @@ tools:
   download_template: https://github.com/scaleway/scaleway-cli/releases/download/v{VERSION}/scaleway-cli_{VERSION}_linux_amd64
 - name: terraform
   repository: hashicorp/terraform
-  version: v1.7.2
+  version: v1.7.3
   verify_command: terraform --version
   interactive: true
   download_template: https://releases.hashicorp.com/terraform/{VERSION}/terraform_{VERSION}_linux_amd64.zip
