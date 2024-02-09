@@ -4,6 +4,7 @@ tools:
   version: v2.10.0
   verify_command: argocd version --client
   download_template: https://github.com/argoproj/argo-cd/releases/download/v{VERSION}/argocd-linux-amd64
+  interactive: true
   tty: true
 - name: helm
   repository: helm/helm
