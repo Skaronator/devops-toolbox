@@ -6,6 +6,9 @@ tools:
   download_template: https://github.com/argoproj/argo-cd/releases/download/v{VERSION}/argocd-linux-amd64
   interactive: true
   tty: true
+  envs:
+    ARGOCD_SERVER: $ARGOCD_SERVER
+    ARGOCD_OPTS: "--grpc-web"
 - name: helm
   repository: helm/helm
   version: v3.14.0
