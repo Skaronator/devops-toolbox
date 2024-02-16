@@ -1,7 +1,7 @@
 tools:
 - name: argocd
   repository: argoproj/argo-cd
-  version: v2.10.0
+  version: v2.10.1
   verify_command: argocd version --client
   download_template: https://github.com/argoproj/argo-cd/releases/download/v{VERSION}/argocd-linux-amd64
   interactive: true
@@ -11,7 +11,7 @@ tools:
     ARGOCD_OPTS: "--grpc-web"
 - name: helm
   repository: helm/helm
-  version: v3.14.0
+  version: v3.14.1
   verify_command: helm version
   download_template: https://get.helm.sh/helm-v{VERSION}-linux-amd64.tar.gz
 - name: k0sctl
@@ -26,7 +26,7 @@ tools:
   download_template: https://github.com/k0sproject/k0sctl/releases/download/v{VERSION}/k0sctl-linux-x64
 - name: k9s
   repository: derailed/k9s
-  version: v0.31.8
+  version: v0.31.9
   verify_command: k9s version
   interactive: true
   tty: true
@@ -39,7 +39,7 @@ tools:
   download_template: https://github.com/derailed/k9s/releases/download/v{VERSION}/k9s_Linux_amd64.tar.gz
 - name: kubectl
   repository: kubernetes/kubernetes
-  version: v1.29.1
+  version: v1.29.2
   verify_command: kubectl version --client
   interactive: true
   download_template: https://dl.k8s.io/release/v{VERSION}/bin/linux/amd64/kubectl
@@ -66,7 +66,7 @@ tools:
   download_template: https://github.com/yannh/kubeconform/releases/download/v{VERSION}/kubeconform-linux-amd64.tar.gz
 - name: kubeseal
   repository: bitnami-labs/sealed-secrets
-  version: v0.25.0
+  version: v0.26.0
   verify_command: kubeseal --version
   download_template: https://github.com/bitnami-labs/sealed-secrets/releases/download/v{VERSION}/kubeseal-{VERSION}-linux-amd64.tar.gz
 - name: scw
@@ -93,6 +93,6 @@ tools:
   download_template: https://releases.hashicorp.com/vault/{VERSION}/vault_{VERSION}_linux_amd64.zip
 - name: yq
   repository: mikefarah/yq
-  version: v4.40.7
+  version: v4.41.1
   verify_command: yq --version
   download_template: https://github.com/mikefarah/yq/releases/download/v{VERSION}/yq_linux_amd64
