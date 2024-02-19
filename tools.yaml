@@ -71,7 +71,7 @@ tools:
   download_template: https://github.com/bitnami-labs/sealed-secrets/releases/download/v{VERSION}/kubeseal-{VERSION}-linux-amd64.tar.gz
 - name: scw
   repository: scaleway/scaleway-cli
-  version: v2.26.0
+  version: v2.27.0
   verify_command: scw version
   download_template: https://github.com/scaleway/scaleway-cli/releases/download/v{VERSION}/scaleway-cli_{VERSION}_linux_amd64
 - name: terraform
