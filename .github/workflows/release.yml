@@ -45,7 +45,7 @@ jobs:
       uses: docker/setup-qemu-action@v3.0.0
 
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3.0.0
+      uses: docker/setup-buildx-action@v3.1.0
 
     # - name: Log into Docker Hub registry
     #   if: github.event_name != 'pull_request'
@@ -73,7 +73,7 @@ jobs:
           type=raw,value=latest
 
     - name: Get tool versions          
-      uses: mikefarah/yq@v4.41.1
+      uses: mikefarah/yq@v4.42.1
       id: tool_versions
       with:
         cmd: yq e '.tools | sort_by(.name) | .[] | (.name + " " + .version)' tools.yaml
