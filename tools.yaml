@@ -26,7 +26,7 @@ tools:
   download_template: https://github.com/k0sproject/k0sctl/releases/download/v{VERSION}/k0sctl-linux-x64
 - name: k9s
   repository: derailed/k9s
-  version: v0.32.0
+  version: v0.32.3
   verify_command: k9s version
   interactive: true
   tty: true
