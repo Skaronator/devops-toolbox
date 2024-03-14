@@ -1,7 +1,7 @@
 tools:
 - name: argocd
   repository: argoproj/argo-cd
-  version: v2.10.2
+  version: v2.10.3
   verify_command: argocd version --client
   download_template: https://github.com/argoproj/argo-cd/releases/download/v{VERSION}/argocd-linux-amd64
   interactive: true
@@ -11,7 +11,7 @@ tools:
     ARGOCD_OPTS: "--grpc-web"
 - name: helm
   repository: helm/helm
-  version: v3.14.2
+  version: v3.14.3
   verify_command: helm version
   download_template: https://get.helm.sh/helm-v{VERSION}-linux-amd64.tar.gz
 - name: k0sctl
@@ -45,7 +45,7 @@ tools:
   download_template: https://dl.k8s.io/release/v{VERSION}/bin/linux/amd64/kubectl
 - name: kubectl-cnpg
   repository: cloudnative-pg/cloudnative-pg
-  version: v1.22.1
+  version: v1.22.2
   verify_command: kubectl-cnpg version
   download_template: https://github.com/cloudnative-pg/cloudnative-pg/releases/download/v{VERSION}/kubectl-cnpg_{VERSION}_linux_x86_64.tar.gz
 - name: kubectl-oidc_login
@@ -66,7 +66,7 @@ tools:
   download_template: https://github.com/yannh/kubeconform/releases/download/v{VERSION}/kubeconform-linux-amd64.tar.gz
 - name: kubeseal
   repository: bitnami-labs/sealed-secrets
-  version: v0.26.0
+  version: v0.26.1
   verify_command: kubeseal --version
   download_template: https://github.com/bitnami-labs/sealed-secrets/releases/download/v{VERSION}/kubeseal-{VERSION}-linux-amd64.tar.gz
 - name: scw
@@ -76,7 +76,7 @@ tools:
   download_template: https://github.com/scaleway/scaleway-cli/releases/download/v{VERSION}/scaleway-cli_{VERSION}_linux_amd64
 - name: terraform
   repository: hashicorp/terraform
-  version: v1.7.4
+  version: v1.7.5
   verify_command: terraform --version
   interactive: true
   download_template: https://releases.hashicorp.com/terraform/{VERSION}/terraform_{VERSION}_linux_amd64.zip
