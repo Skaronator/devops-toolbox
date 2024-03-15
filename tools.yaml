@@ -39,7 +39,7 @@ tools:
   download_template: https://github.com/derailed/k9s/releases/download/v{VERSION}/k9s_Linux_amd64.tar.gz
 - name: kubectl
   repository: kubernetes/kubernetes
-  version: v1.29.2
+  version: v1.29.3
   verify_command: kubectl version --client
   interactive: true
   download_template: https://dl.k8s.io/release/v{VERSION}/bin/linux/amd64/kubectl
