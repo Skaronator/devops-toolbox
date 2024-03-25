@@ -26,7 +26,7 @@ tools:
   download_template: https://github.com/k0sproject/k0sctl/releases/download/v{VERSION}/k0sctl-linux-x64
 - name: k9s
   repository: derailed/k9s
-  version: v0.32.3
+  version: v0.32.4
   verify_command: k9s version
   interactive: true
   tty: true
@@ -71,7 +71,7 @@ tools:
   download_template: https://github.com/bitnami-labs/sealed-secrets/releases/download/v{VERSION}/kubeseal-{VERSION}-linux-amd64.tar.gz
 - name: scw
   repository: scaleway/scaleway-cli
-  version: v2.27.0
+  version: v2.28.0
   verify_command: scw version
   download_template: https://github.com/scaleway/scaleway-cli/releases/download/v{VERSION}/scaleway-cli_{VERSION}_linux_amd64
 - name: terraform
@@ -93,6 +93,6 @@ tools:
   download_template: https://releases.hashicorp.com/vault/{VERSION}/vault_{VERSION}_linux_amd64.zip
 - name: yq
   repository: mikefarah/yq
-  version: v4.42.1
+  version: v4.43.1
   verify_command: yq --version
   download_template: https://github.com/mikefarah/yq/releases/download/v{VERSION}/yq_linux_amd64
