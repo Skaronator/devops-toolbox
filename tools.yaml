@@ -1,7 +1,7 @@
 tools:
 - name: argocd
   repository: argoproj/argo-cd
-  version: v2.10.4
+  version: v2.10.5
   verify_command: argocd version --client
   download_template: https://github.com/argoproj/argo-cd/releases/download/v{VERSION}/argocd-linux-amd64
   interactive: true
@@ -16,7 +16,7 @@ tools:
   download_template: https://get.helm.sh/helm-v{VERSION}-linux-amd64.tar.gz
 - name: k0sctl
   repository: k0sproject/k0sctl
-  version: v0.17.4
+  version: v0.17.5
   verify_command: k0sctl version
   envs:
     DISABLE_TELEMETRY: true
@@ -71,7 +71,7 @@ tools:
   download_template: https://github.com/bitnami-labs/sealed-secrets/releases/download/v{VERSION}/kubeseal-{VERSION}-linux-amd64.tar.gz
 - name: scw
   repository: scaleway/scaleway-cli
-  version: v2.28.0
+  version: v2.29.0
   verify_command: scw version
   download_template: https://github.com/scaleway/scaleway-cli/releases/download/v{VERSION}/scaleway-cli_{VERSION}_linux_amd64
 - name: terraform
@@ -88,7 +88,7 @@ tools:
   download_template: https://github.com/opentofu/opentofu/releases/download/v{VERSION}/tofu_{VERSION}_linux_amd64.zip
 - name: vault
   repository: hashicorp/vault
-  version: v1.15.6
+  version: v1.16.0
   verify_command: vault --version
   download_template: https://releases.hashicorp.com/vault/{VERSION}/vault_{VERSION}_linux_amd64.zip
 - name: yq
