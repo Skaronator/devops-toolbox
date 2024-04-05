@@ -1,7 +1,7 @@
 tools:
 - name: argocd
   repository: argoproj/argo-cd
-  version: v2.10.5
+  version: v2.10.6
   verify_command: argocd version --client
   download_template: https://github.com/argoproj/argo-cd/releases/download/v{VERSION}/argocd-linux-amd64
   interactive: true
@@ -66,7 +66,7 @@ tools:
   download_template: https://github.com/yannh/kubeconform/releases/download/v{VERSION}/kubeconform-linux-amd64.tar.gz
 - name: kubeseal
   repository: bitnami-labs/sealed-secrets
-  version: v0.26.1
+  version: v0.26.2
   verify_command: kubeseal --version
   download_template: https://github.com/bitnami-labs/sealed-secrets/releases/download/v{VERSION}/kubeseal-{VERSION}-linux-amd64.tar.gz
 - name: scw
@@ -88,7 +88,7 @@ tools:
   download_template: https://github.com/opentofu/opentofu/releases/download/v{VERSION}/tofu_{VERSION}_linux_amd64.zip
 - name: vault
   repository: hashicorp/vault
-  version: v1.16.0
+  version: v1.16.1
   verify_command: vault --version
   download_template: https://releases.hashicorp.com/vault/{VERSION}/vault_{VERSION}_linux_amd64.zip
 - name: yq
