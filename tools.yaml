@@ -1,7 +1,7 @@
 tools:
 - name: argocd
   repository: argoproj/argo-cd
-  version: v2.10.6
+  version: v2.10.7
   verify_command: argocd version --client
   download_template: https://github.com/argoproj/argo-cd/releases/download/v{VERSION}/argocd-linux-amd64
   interactive: true
@@ -11,7 +11,7 @@ tools:
     ARGOCD_OPTS: "--grpc-web"
 - name: helm
   repository: helm/helm
-  version: v3.14.3
+  version: v3.14.4
   verify_command: helm version
   download_template: https://get.helm.sh/helm-v{VERSION}-linux-amd64.tar.gz
 - name: k0sctl
@@ -76,7 +76,7 @@ tools:
   download_template: https://github.com/scaleway/scaleway-cli/releases/download/v{VERSION}/scaleway-cli_{VERSION}_linux_amd64
 - name: terraform
   repository: hashicorp/terraform
-  version: v1.7.5
+  version: v1.8.0
   verify_command: terraform --version
   interactive: true
   download_template: https://releases.hashicorp.com/terraform/{VERSION}/terraform_{VERSION}_linux_amd64.zip
